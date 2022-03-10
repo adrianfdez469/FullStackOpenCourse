@@ -1,0 +1,26 @@
+title Load page
+
+actor User
+User->browser: Goes to https://studies.cs.helsinki.fi/exampleapp/spa
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+note over server:
+Server responds with a html file, that includes
+the *.css and *.js to use in the SPA.
+end note
+
+server-->browser: HTTP code 200 (spa.html)
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+note over browser:
+browser starts executing js-code
+that requests JSON data from server
+and changes the DOM (no page reload) 
+end note
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+note over browser:
+browser executes the event handler
+that renders notes to display by editing the DOM
+end note

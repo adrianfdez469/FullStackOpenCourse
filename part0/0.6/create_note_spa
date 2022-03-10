@@ -1,0 +1,19 @@
+title Create new note (SPA)
+
+actor User
+User->browser: Push "Save" button
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+note over server:
+If everithing goes well, 
+server respond with a 
+201 http code to the
+browser and some JSON response 
+(response is optional).
+end note
+server-->browser: HTTP code 201 ({"message":"note created"})
+
+note over browser:
+The response could be captured by a 
+callback function and updates the
+DOM if neccesary
+end note

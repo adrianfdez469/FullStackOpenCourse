@@ -1,0 +1,31 @@
+title Create new note
+
+actor User
+User->browser: Push "Save" button
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over server:
+If everithing goes well, server respond with a 302 code to the
+browser. This indicates to the browser to redirect to an specific url.
+This specific url is on the location hearder attribute 
+end note
+server-->browser: HTTP code 302 (location: /exampleapp/notes)
+note over browser:
+From here on in the diagram every thing is as 
+the same as load the /exmapleapp/notes page
+end note
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+note over browser:
+browser executes the event handler
+that renders notes to display
+end notes
