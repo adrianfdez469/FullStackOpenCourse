@@ -19,7 +19,7 @@ const App = () => {
       <Buttons 
         goodHandler={incGood}
         neutralHandler={incNeutral}
-        incBad={incBad}
+        badHandler={incBad}
       />
       <Statistics 
         good={good}

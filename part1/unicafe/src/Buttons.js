@@ -1,12 +1,13 @@
 import React from 'react';
+import Button from './Button';
 
-const Buttons = ({goodHandler, neutralHandler, incBad}) => {
+const Buttons = ({goodHandler, neutralHandler, badHandler}) => {
 
   return (
     <>
-      <button onClick={goodHandler}>Good</button>
-      <button onClick={neutralHandler}>Neutral</button>
-      <button onClick={incBad}>Bad</button>
+      <Button text='Good' handler={goodHandler}/>
+      <Button text='Neutral' handler={neutralHandler}/>
+      <Button text='Bad' handler={badHandler}/>
     </>
   );
 

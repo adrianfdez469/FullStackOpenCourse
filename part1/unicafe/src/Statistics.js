@@ -1,26 +1,29 @@
 import React from 'react';
+import StatitsticLine from './StatisticLine';
 
 const Statistics = props => {
 
-  const {good, neutral, bad} = props;
+  const { good, neutral, bad } = props;
 
   const all = good + neutral + bad;
   const getAvg = () => good / all - bad / all;
-  const getPos = () => good * 100 / all;
+  const getPercentage = () => good * 100 / all;
 
-  if(all === 0)
+  if (all === 0)
     return <p>No feedback given</p>
 
   return (
     <>
       <h1>Statistics</h1>
-      <div>Good {good}</div>
-      <div>Neutral {neutral}</div>
-      <div>Bad {bad}</div>
-      <div>All {all}</div>
-      <div>Average {getAvg()}</div>
-      <div>Positive {getPos()}</div>
-
+      <table>
+        <tbody>
+          <StatitsticLine text={'Good'} data={good} />
+          <StatitsticLine text={'Neutral'} data={neutral} />
+          <StatitsticLine text={'Bad'} data={bad} />
+          <StatitsticLine text={'Average'} data={getAvg()} />
+          <StatitsticLine text={'Positive'} data={getPercentage()} />
+        </tbody>
+      </table>
     </>
   );
 
