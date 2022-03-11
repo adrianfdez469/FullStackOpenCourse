@@ -8,6 +8,9 @@ const Statistics = props => {
   const getAvg = () => good / all - bad / all;
   const getPos = () => good * 100 / all;
 
+  if(all === 0)
+    return <p>No feedback given</p>
+
   return (
     <>
       <h1>Statistics</h1>

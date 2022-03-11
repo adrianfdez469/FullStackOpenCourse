@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Header = () => {
+const Statistics = () => {
 
-  return <h1>Statistics</h1>
+  return <h1>Give feedback</h1>
 
 }
-export default Header;
+export default Statistics;
