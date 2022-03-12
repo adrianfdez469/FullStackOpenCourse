@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios';
 import Filter from './Filter'
 import PersonForm from './PersonForm'
 import Persons from './Persons'
+
+import personService from './services/personService'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -24,17 +25,50 @@ const App = () => {
     event.preventDefault()
     const exists = persons.find(p => p.name === newName)
     if(exists){
-      alert(`${exists.name} is already added to phonebook.`);
+      if(window.confirm(`${exists.name} is already added to phonebook, replace the old number with a new one?`)){
+        const newPerson =  {...exists, number: newPhone};
+        personService.update(exists.id, newPerson)
+          .then(data => {
+            console.log(data);
+            setPersons(persons.map(p => p.id !== exists.id ? p : newPerson));
+          })
+          .catch(err => {
+            console.log(err);
+            alert('Error')
+          })
+      }
     } else {
-      setPersons([...persons, {name:newName, number: newPhone}])
+      const newPerson = {name:newName, number: newPhone}
+      personService.create(newPerson)
+        .then(p => {
+          setPersons([...persons, p])
+        })
+        .catch(err => {
+          console.log(err)
+          alert('Error')
+        })
+    }
+  }
+
+  const onDeletePerson = (person) => {
+    if(window.confirm(`Are you sure you want to delete ${person.name}`)){
+      personService.remove(person.id)
+        .then(() => {
+          setPersons(persons.filter(p => p.id !== person.id))
+        })
+        .catch(err => {
+          console.log(err)
+          alert('Error')
+        })
     }
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3001/persons')
-      .then(resp => {
-        console.log(resp);
-        setPersons(resp.data);
+    personService.getAll()
+      .then(persons => setPersons(persons))
+      .catch(err => {
+        console.log(err)
+        alert('Error')
       })
   }, [])
   
@@ -53,7 +87,7 @@ const App = () => {
       />
       
       <h2>Numbers</h2>
-      <Persons persons={persons} filter={filter} />
+      <Persons persons={persons} filter={filter} onDeletePerson={onDeletePerson}/>
       
     </div>
   )
