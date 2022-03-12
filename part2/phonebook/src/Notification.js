@@ -12,7 +12,7 @@ const Notification = ({message, error=true, clearMessage}) => {
         clearTimeout(timer)
       }
     }
-  }, [message])
+  }, [message, clearMessage])
 
 
   if(message === ""){

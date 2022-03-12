@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Filter from './Filter'
 import PersonForm from './PersonForm'
 import Persons from './Persons'
@@ -17,15 +17,19 @@ const App = () => {
     const filterTxt = event.target.value;
     setFilter(filterTxt)
   }
+
   const onNameChange = (event) => {
     setNewName(event.target.value)
   }
+
   const onPhoneChange = (event) => {
     setNewPhone(event.target.value)
   }
+
   const showNotification = (message, error=false) => {
     setNotification({message, error})
   }
+
   const formSubmit = (event) => {
     event.preventDefault()
     const exists = persons.find(p => p.name === newName)
@@ -75,9 +79,9 @@ const App = () => {
     }
   }
 
-  const clearMessage = () => {
+  const clearMessage = useCallback(() => {
     setNotification({message: '', error: false})
-  }
+  }, [])
 
   useEffect(() => {
     personService.getAll()
