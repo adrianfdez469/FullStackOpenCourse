@@ -22,7 +22,8 @@ const remove = (id) => {
 
 const update = (id, newPerson) => {
   return axios.put(`${basePersonUrl}/${id}`, newPerson)
-    .then(resp => resp.data);
+    .then(resp => resp.data)
+    
 }
 
 const service = { getAll, create, remove, update }

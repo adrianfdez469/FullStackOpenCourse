@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Filter from './Filter'
 import PersonForm from './PersonForm'
 import Persons from './Persons'
+import Notification from './Notification'
 
 import personService from './services/personService'
 
@@ -10,6 +11,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
   const [filter, setFilter] = useState('')
+  const [notification, setNotification] = useState({message: '', error: false})
 
   const onChangeFilter = (event) => {
     const filterTxt = event.target.value;
@@ -21,6 +23,9 @@ const App = () => {
   const onPhoneChange = (event) => {
     setNewPhone(event.target.value)
   }
+  const showNotification = (message, error=false) => {
+    setNotification({message, error})
+  }
   const formSubmit = (event) => {
     event.preventDefault()
     const exists = persons.find(p => p.name === newName)
@@ -29,12 +34,17 @@ const App = () => {
         const newPerson =  {...exists, number: newPhone};
         personService.update(exists.id, newPerson)
           .then(data => {
-            console.log(data);
             setPersons(persons.map(p => p.id !== exists.id ? p : newPerson));
+            showNotification('Number replaced!')
           })
           .catch(err => {
-            console.log(err);
-            alert('Error')
+            // Not found
+            if(err.response.status === 404){
+              showNotification(`Information of ${newPerson.name} has already been removed from server.`, true)
+              
+            }else{
+              showNotification('Error!', true)
+            }
           })
       }
     } else {
@@ -42,10 +52,11 @@ const App = () => {
       personService.create(newPerson)
         .then(p => {
           setPersons([...persons, p])
+          showNotification('Person added!')
         })
         .catch(err => {
           console.log(err)
-          alert('Error')
+          showNotification('Error!', true)
         })
     }
   }
@@ -55,12 +66,17 @@ const App = () => {
       personService.remove(person.id)
         .then(() => {
           setPersons(persons.filter(p => p.id !== person.id))
+          showNotification('Person deleted!')
         })
         .catch(err => {
           console.log(err)
-          alert('Error')
+          showNotification('Error!', true)
         })
     }
+  }
+
+  const clearMessage = () => {
+    setNotification({message: '', error: false})
   }
 
   useEffect(() => {
@@ -68,7 +84,7 @@ const App = () => {
       .then(persons => setPersons(persons))
       .catch(err => {
         console.log(err)
-        alert('Error')
+        showNotification('Error!', true)
       })
   }, [])
   
@@ -76,7 +92,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-        <Filter filter={filter} onChangeFilter={onChangeFilter}/>
+      <Notification message={notification.message} error={notification.error} clearMessage={clearMessage}/>
+      <Filter filter={filter} onChangeFilter={onChangeFilter}/>
       <h2>Add contact</h2>
       <PersonForm 
         newName={newName} 

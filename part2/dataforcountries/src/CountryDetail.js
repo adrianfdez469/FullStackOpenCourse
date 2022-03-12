@@ -2,8 +2,6 @@ import React from 'react';
 import Weather from './Weather';
 
 const CountryDetail = ({country}) => {
-  console.log(country);
-  
   return (
     <>
       <h1>{country.name.common}</h1>
