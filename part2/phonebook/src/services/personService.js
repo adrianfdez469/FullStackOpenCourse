@@ -11,6 +11,9 @@ const getAll = () => {
 const create = (person) => {
   return axios.post(basePersonUrl, person)
     .then(resp => resp.data)
+    /*.catch(err => {
+      console.log(err);
+    })*/
 }
 
 const remove = (id) => {

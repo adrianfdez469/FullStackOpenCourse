@@ -45,7 +45,8 @@ const App = () => {
             // Not found
             if(err.response.status === 404){
               showNotification(`Information of ${newPerson.name} has already been removed from server.`, true)
-              
+            } else if(err.response.status === 400){
+              showNotification(err.response.data.error, true)
             }else{
               showNotification('Error!', true)
             }
@@ -59,8 +60,7 @@ const App = () => {
           showNotification('Person added!')
         })
         .catch(err => {
-          console.log(err)
-          showNotification('Error!', true)
+          showNotification(err.response.data.error, true)
         })
     }
   }
