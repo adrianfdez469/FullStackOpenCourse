@@ -8,7 +8,7 @@ Content-Type: application/json
 {
   "title": "The learning path to FullStack",
   "author": "Adrian Fernandez",
-  //"url": "http://google.com",
+  "url": "http://google.com",
   "": 0
 }
 
@@ -24,4 +24,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3003/api/blogs
+DELETE http://localhost:3003/api/blogs/623165d0ac1cb57a0134b895
