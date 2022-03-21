@@ -1,18 +1,18 @@
 const http = require('http')
+const {MONGO_URI, PORT} = require('./config')
 const express = require('express')
+require('express-async-errors')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const blogRoutes = require('./controllers/blogRoutes')
+const {errorHandler} = require('./utils/middleware')
 
-const mongoUrl = 'mongodb://localhost/bloglist'
-mongoose.connect(mongoUrl)
+mongoose.connect(MONGO_URI)
 
 app.use(cors())
 app.use(express.json())
 app.use('/api/blogs' ,blogRoutes)
+app.use(errorHandler)
 
-const PORT = 3003
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+module.exports = app
