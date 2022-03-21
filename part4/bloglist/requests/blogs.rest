@@ -13,11 +13,11 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3003/api/blogs/623163482abc59270c54d4db
+PUT http://localhost:3003/api/blogs/623849fc428061782fa85420
 Content-Type: application/json
 
 {
-  "likes": 3,
+  "likes": 5,
   "title": "The learning path to FullStack",
   "author": "Adrian Fernandez",
   "url": "http://google.com"
