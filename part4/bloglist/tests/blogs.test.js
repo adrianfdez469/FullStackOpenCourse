@@ -11,7 +11,7 @@ beforeEach(async () => {
   await BlogModel.insertMany(blogs)
 })
 
-describe('Testing API - Get blogs', () => {
+describe('Integration tests - Get blogs', () => {
   
   test('should get 200 http code and appication/json Content-Type', async () => {
     await api.get('/api/blogs').expect(200).expect('Content-Type', /application\/json/)
@@ -31,7 +31,7 @@ describe('Testing API - Get blogs', () => {
    })
 })
 
-describe('Testing API - POST blog', () => {
+describe('Integration tests - POST blog', () => {
 
   const newBlog = {
     title: "How to be a Pirate",
@@ -94,7 +94,7 @@ describe('Testing API - POST blog', () => {
 })
 
 
-describe('Testing API - DELETE blog', () => {
+describe('Integration tests - DELETE blog', () => {
   test('should send 404 if theres no param id', async () => {
     await api.delete(`/api/blogs`).expect(404)
   })

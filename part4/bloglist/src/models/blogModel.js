@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const {Schema, model, Types} = require('mongoose')
 
 const blogSchema = new Schema({
   title: {
@@ -13,11 +13,15 @@ const blogSchema = new Schema({
   likes: {
     type: Number,
     default: 0
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 }, {
   toJSON: {
     transform: (document, ret, options) => {
-      const  {_id, ...obj} = ret
+      const  {_id, __v, ...obj} = ret
       return {
         ...obj,
         id: _id
