@@ -21,9 +21,7 @@ route.post('/', async (request, response) => {
   const token = jwt.sign({
     id: user._id,
     username: user.username
-  }, JWT_SECRET, {
-    expiresIn: '1h'
-  })
+  }, JWT_SECRET)
 
   response.status(200).send({
     token, username: user.username, name: user.name
