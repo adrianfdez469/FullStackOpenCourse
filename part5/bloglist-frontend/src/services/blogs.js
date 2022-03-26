@@ -29,11 +29,11 @@ const deleteBlog = (blogId, token) => {
     headers: {
       'Authorization': `Bearer ${token}`
     }
-  }).then(resp => resp.data);
-} 
+  }).then(resp => resp.data)
+}
 
 const exp = {
-  getAll, 
+  getAll,
   createBlog,
   updateBlog,
   deleteBlog

@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
-const Blog = ({blog, user, onLikeBlog, onDeleteBlog}) => {
-  
+const Blog = ({ blog, user, onLikeBlog, onDeleteBlog }) => {
+
   const [showDetails, setShowDetails] = useState(false)
 
   const toggleDetailsVisibility = () => {
@@ -14,23 +14,24 @@ const Blog = ({blog, user, onLikeBlog, onDeleteBlog}) => {
     border: 'solid',
     borderWidth: 1,
     marginBottom: 5
-  } 
+  }
 
   return (
     <div style={blogStyle}>
       <div>
-        {blog.title} {blog.author} <button onClick={toggleDetailsVisibility}>{showDetails ? 'Hide' : 'View'}</button> 
+        {blog.title} {blog.author} <button onClick={toggleDetailsVisibility}>{showDetails ? 'Hide' : 'View'}</button>
       </div>
-      <div style={{display: showDetails ? '' : 'None'}}>
+      <div style={{ display: showDetails ? '' : 'None' }}>
         <div>{blog.url}</div>
         <div>
-          Likes: {blog.likes} 
+          Likes: {blog.likes}
           <button onClick={() => onLikeBlog(blog)}>Like</button>
         </div>
         <div>{user.name}</div>
         {user.name === blog.user.name &&<button onClick={() => onDeleteBlog(blog)}>Remove</button>}
       </div>
-    </div>  
-)}
+    </div>
+  )
+}
 
 export default Blog
