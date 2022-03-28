@@ -9,15 +9,21 @@ const Login = ({ notification, clearNotificationMsg, setUser, setNotification })
 
   const onLogin = (event) => {
     event.preventDefault()
-    loginService.login({ username, password })
+    loginService.login({ username, password }, setNotification)
       .then(data => {
         setUser(data)
       })
       .catch(err => {
         console.log(err)
+        console.info()
         if(err.response.status === 401){
           setNotification({
             message: 'Wrong username or passawor',
+            error: true
+          })
+        } else {
+          setNotification({
+            message: 'Something went wrong. Contact to the administrator!',
             error: true
           })
         }
