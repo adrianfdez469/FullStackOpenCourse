@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Blog = ({ blog, user, onLikeBlog, onDeleteBlog }) => {
+const BlogItem = ({ blog, user, onLikeBlog, onDeleteBlog }) => {
 
   const [showDetails, setShowDetails] = useState(false)
 
@@ -18,14 +18,14 @@ const Blog = ({ blog, user, onLikeBlog, onDeleteBlog }) => {
 
   return (
     <div style={blogStyle}>
-      <div>
+      <div id="blog-basic-data">
         {blog.title} {blog.author} <button onClick={toggleDetailsVisibility}>{showDetails ? 'Hide' : 'View'}</button>
       </div>
-      <div style={{ display: showDetails ? '' : 'None' }}>
+      <div id="blog-full-data" style={{ display: showDetails ? '' : 'None' }}>
         <div>{blog.url}</div>
         <div>
           Likes: {blog.likes}
-          <button onClick={() => onLikeBlog(blog)}>Like</button>
+          <button id='likeBtn' onClick={() => onLikeBlog(blog)}>Like</button>
         </div>
         <div>{user.name}</div>
         {user.name === blog.user.name &&<button onClick={() => onDeleteBlog(blog)}>Remove</button>}
@@ -34,4 +34,4 @@ const Blog = ({ blog, user, onLikeBlog, onDeleteBlog }) => {
   )
 }
 
-export default Blog
+export default BlogItem

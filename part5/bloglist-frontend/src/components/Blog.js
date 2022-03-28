@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import BlogList from './BlogList'
 import BlogForm from './BlogForm'
@@ -8,6 +8,7 @@ import blogService from '../services/blogs'
 const Blog = ({ user, logout, notification, clearNotificationMsg, setNotification }) => {
 
   const [blogs, setBlogs] = useState([])
+  const togglableRef = useRef()
 
   useEffect(() => {
     blogService.getAll().then(blogs =>
@@ -15,10 +16,25 @@ const Blog = ({ user, logout, notification, clearNotificationMsg, setNotificatio
     )
   }, [])
 
-  const addBlog = (blogData) => {
-    setBlogs(bls => {
-      return [...bls, blogData]
-    })
+  const addBlog = (title, author, url) => {
+    blogService.createBlog({ title, author, url }, user.token)
+      .then(data => {
+        setBlogs(bls => {
+          return [...bls, data]
+        })
+        setNotification({
+          message: `Blog "${data.title}" by "${data.author}" added.`,
+          error: false
+        })
+        togglableRef.current.toggleVisibility()
+      })
+      .catch(err => {
+        console.log(err)
+        setNotification({
+          message: 'Error!',
+          error: true
+        })
+      })
   }
 
   const onLikeBlog = (blog) => {
@@ -74,6 +90,7 @@ const Blog = ({ user, logout, notification, clearNotificationMsg, setNotificatio
         user={user}
         addBlog={addBlog}
         setNotification={setNotification}
+        togglableRef={togglableRef}
       />
       <br/>
       <BlogList blogs={blogs} user={user} onLikeBlog={onLikeBlog} onDeleteBlog={onDeleteBlog}/>

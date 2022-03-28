@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1648451783855" clover="3.2.0">
+  <project timestamp="1648451783855" name="All files">
+    <metrics statements="152" coveredstatements="127" conditionals="48" coveredconditionals="34" methods="24" coveredmethods="20" elements="224" coveredelements="181" complexity="0" loc="152" ncloc="152" packages="5" files="10" classes="10"/>
+    <package name="src">
+      <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+      <file name="app.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\app.js">
+        <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+      <file name="config.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\config.js">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.controllers">
+      <metrics statements="63" coveredstatements="46" conditionals="18" coveredconditionals="10" methods="7" coveredmethods="4"/>
+      <file name="blogRoutes.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\controllers\blogRoutes.js">
+        <metrics statements="26" coveredstatements="23" conditionals="6" coveredconditionals="4" methods="4" coveredmethods="3"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="22" count="7" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="4" type="cond" truecount="2" falsecount="2"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+      </file>
+      <file name="loginRouter.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\controllers\loginRouter.js">
+        <metrics statements="18" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+      </file>
+      <file name="userRoutes.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\controllers\userRoutes.js">
+        <metrics statements="19" coveredstatements="15" conditionals="8" coveredconditionals="6" methods="2" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.models">
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="blogModel.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\models\blogModel.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="24" count="23" type="stmt"/>
+        <line num="25" count="23" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+      </file>
+      <file name="userModel.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\models\userModel.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.utils">
+      <metrics statements="49" coveredstatements="41" conditionals="28" coveredconditionals="23" methods="15" coveredmethods="14"/>
+      <file name="list_helper.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\utils\list_helper.js">
+        <metrics statements="22" coveredstatements="22" conditionals="16" coveredconditionals="15" methods="12" coveredmethods="12"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="12" count="7" type="cond" truecount="4" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="23" count="7" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="4" type="cond" truecount="3" falsecount="1"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="39" count="7" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="42" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="45" count="1" type="stmt"/>
+      </file>
+      <file name="middleware.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\src\utils\middleware.js">
+        <metrics statements="27" coveredstatements="19" conditionals="12" coveredconditionals="8" methods="3" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="13" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="12" type="stmt"/>
+        <line num="32" count="12" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="test_helper.js" path="D:\_STUDY_\INFORMATICA\EJEMPLOS\FullStackOpenCourse\part4\bloglist\tests\test_helper.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
