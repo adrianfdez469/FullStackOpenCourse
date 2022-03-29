@@ -20,7 +20,9 @@ const Blog = ({ user, logout, notification, clearNotificationMsg, setNotificatio
     blogService.createBlog({ title, author, url }, user.token)
       .then(data => {
         setBlogs(bls => {
-          return [...bls, data]
+          const newBlog = { ...data, user }
+          const newBlogs = [...bls, newBlog]
+          return newBlogs
         })
         setNotification({
           message: `Blog "${data.title}" by "${data.author}" added.`,
@@ -85,11 +87,9 @@ const Blog = ({ user, logout, notification, clearNotificationMsg, setNotificatio
     <div>
       <h1>Blogs</h1>
       <Notification message={notification.message} error={notification.error}  clearMessage={clearNotificationMsg}/>
-      <div>{user.name} logged in <button onClick={logout}>Logout</button></div>
+      <div data-testid="user-loggedin">{user.name} logged in <button onClick={logout}>Logout</button></div>
       <BlogForm
-        user={user}
         addBlog={addBlog}
-        setNotification={setNotification}
         togglableRef={togglableRef}
       />
       <br/>

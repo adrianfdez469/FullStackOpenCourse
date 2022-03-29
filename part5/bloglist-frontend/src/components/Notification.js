@@ -31,7 +31,7 @@ const Notification = ({ message, error=true, clearMessage }) => {
   }
 
   return (
-    <div style={notificationStyle}>
+    <div data-testid="notification" style={notificationStyle}>
       {message}
     </div>
   )

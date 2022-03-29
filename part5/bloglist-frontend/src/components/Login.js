@@ -15,10 +15,9 @@ const Login = ({ notification, clearNotificationMsg, setUser, setNotification })
       })
       .catch(err => {
         console.log(err)
-        console.info()
         if(err.response.status === 401){
           setNotification({
-            message: 'Wrong username or passawor',
+            message: 'Wrong username or password',
             error: true
           })
         } else {
@@ -34,11 +33,10 @@ const Login = ({ notification, clearNotificationMsg, setUser, setNotification })
     <>
       <h1>Login to application</h1>
       <Notification message={notification.message} clearMessage={clearNotificationMsg}/>
-      <form onSubmit={(event) => onLogin(event)}>
+      <form data-testid="loginform" onSubmit={(event) => onLogin(event)}>
         <div>Username: <input value={username} onChange={({ target }) => setUsername(target.value)}/></div>
         <div>Password <input value={password} onChange={({ target }) => setPassword(target.value)}/></div>
         <div>Username: <button type={'submit'}>Login</button></div>
-
       </form>
     </>
   )

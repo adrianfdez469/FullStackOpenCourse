@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Blog from './components/Blog'
 import Login from './components/Login'
 import loginService from './services/login'
@@ -17,6 +17,12 @@ const App = () => {
     setUser(null)
     clearNotificationMsg()
   }
+
+  useEffect(() => {
+    const user = loginService.getUser()
+    if(user)
+      setUser(user)
+  }, [])
 
   return user
     ? <Blog

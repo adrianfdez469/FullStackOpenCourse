@@ -24,5 +24,14 @@ const logout = () => {
   window.localStorage.removeItem('blogListUser')
 }
 
-const exp = { login, logout }
+const getUser = () => {
+  const lsData = localStorage.getItem('blogListUser')
+  if(lsData){
+    const user = JSON.parse(lsData)
+    return user
+  }
+  return null
+}
+
+const exp = { login, logout, getUser }
 export default exp

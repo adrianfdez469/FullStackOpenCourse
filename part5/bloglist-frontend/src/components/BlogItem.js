@@ -17,15 +17,15 @@ const BlogItem = ({ blog, user, onLikeBlog, onDeleteBlog }) => {
   }
 
   return (
-    <div style={blogStyle}>
-      <div id="blog-basic-data">
+    <div data-testid="blog-item" style={blogStyle}>
+      <div data-testid="blog-basic-data">
         {blog.title} {blog.author} <button onClick={toggleDetailsVisibility}>{showDetails ? 'Hide' : 'View'}</button>
       </div>
-      <div id="blog-full-data" style={{ display: showDetails ? '' : 'None' }}>
+      <div data-testid="blog-full-data" style={{ display: showDetails ? '' : 'None' }}>
         <div>{blog.url}</div>
         <div>
           Likes: {blog.likes}
-          <button id='likeBtn' onClick={() => onLikeBlog(blog)}>Like</button>
+          <button data-testid='likeBtn' onClick={() => onLikeBlog(blog)}>Like</button>
         </div>
         <div>{user.name}</div>
         {user.name === blog.user.name &&<button onClick={() => onDeleteBlog(blog)}>Remove</button>}

@@ -20,9 +20,9 @@ const BlogForm = ({ addBlog, togglableRef }) => {
     <Togglable buttonLabel={'New Note'} ref={togglableRef}>
       <h1>Create new blog</h1>
       <form onSubmit={(event) => onBlogSummit(event)}>
-        <div>Title:<input name='title' value={title} onChange={({ target }) => setTitle(target.value)}/></div>
-        <div>Author:<input name='author' value={author} onChange={({ target }) => setAuthor(target.value)}/></div>
-        <div>Url:<input name='url' value={url} onChange={({ target }) => setUrl(target.value)}/></div>
+        <div>Title:<input data-testid='title' value={title} onChange={({ target }) => setTitle(target.value)}/></div>
+        <div>Author:<input data-testid='author' value={author} onChange={({ target }) => setAuthor(target.value)}/></div>
+        <div>Url:<input data-testid='url' value={url} onChange={({ target }) => setUrl(target.value)}/></div>
         <div><button type='submit'>Create</button></div>
       </form>
     </Togglable>

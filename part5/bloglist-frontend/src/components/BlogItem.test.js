@@ -22,8 +22,8 @@ describe('Rendering BlogItem', () => {
   test('should render blog title and author, but not url or likes', () => {
     const { container } = render(<BlogItem user={userData} blog={blogData} />)
 
-    const primaryDiv = container.querySelector('#blog-basic-data')
-    const secondaryDiv = container.querySelector('#blog-full-data')
+    const primaryDiv = container.querySelector('[data-testid="blog-basic-data"]')
+    const secondaryDiv = container.querySelector('[data-testid="blog-full-data"]')
     // const secondaryDiv = container.querySelector('[display="None"]')
     // expect(secondaryDiv).toBeDefined()
     expect(primaryDiv).toHaveTextContent('Blog title')
@@ -39,7 +39,7 @@ describe('Rendering BlogItem', () => {
     const button = screen.getByText('View')
     userEvent.click(button)
 
-    const secondaryDiv = container.querySelector('#blog-full-data')
+    const secondaryDiv = container.querySelector('[data-testid="blog-full-data"]')
     const urlDiv = screen.getByText('http://localhost')
     const likesDiv = screen.getByText('Likes: 5')
 
@@ -55,7 +55,7 @@ describe('Rendering BlogItem', () => {
     userEvent.click(button)
 
 
-    const likeButton = container.querySelector('#likeBtn')
+    const likeButton = container.querySelector('[data-testid="likeBtn"]')
     userEvent.click(likeButton)
     userEvent.click(likeButton)
 
