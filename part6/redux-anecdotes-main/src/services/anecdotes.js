@@ -17,4 +17,11 @@ const createNew = async (text) => {
   return response.data
 }
 
-export { getAll, createNew }
+const saveVote = async (id) => {
+  const { data: anecdote} = await axios.get(`${url}/${id}`)
+  const votedAnecdote = await axios.patch(`${url}/${id}`, { votes: anecdote.votes + 1})
+  return votedAnecdote.data
+}
+
+const service = { getAll, createNew, saveVote }
+export default service 
