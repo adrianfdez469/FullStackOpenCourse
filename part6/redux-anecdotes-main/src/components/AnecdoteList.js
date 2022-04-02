@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { vote } from '../reducers/anecdoteReducer'
-import { setNotification } from '../reducers/notificationReducer'
+import { setNotification, showNotification } from '../reducers/notificationReducer'
 
 const AnecdoteList = props => {
   
@@ -13,7 +13,7 @@ const AnecdoteList = props => {
 
   const voteHandler = ({id, content}) => {
     dispatch(vote(id))
-    dispatch(setNotification(`Voted: ${content}`, 3))
+    dispatch(showNotification({ message: `Voted: ${content}`, time: 5 }))
   }
 
   return anecdotes.map(anecdote =>  

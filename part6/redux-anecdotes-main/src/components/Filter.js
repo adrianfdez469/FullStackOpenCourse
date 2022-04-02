@@ -1,18 +1,23 @@
 import React from 'react';
-import { useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { filter } from '../reducers/filterReducer'
 
 
 const Filter = props => {
 
-  const dispatch = useDispatch()
-
   return (
     <div> 
       Filter:
-      <input type='text' onChange={({target}) => dispatch(filter(target.value))}></input> 
+      <input type='text' onChange={({target}) => props.filter(target.value)}></input> 
     </div>
   );
-
 }
-export default Filter;
+
+const mapDispatchToProps = {
+  filter
+}
+
+const conectedFilter = connect(null, mapDispatchToProps)(Filter)
+
+
+export default conectedFilter;
