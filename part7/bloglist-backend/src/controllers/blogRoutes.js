@@ -54,4 +54,27 @@ route.patch('/:id', async (request, response) => {
   response.status(201).json(blog)
 })
 
+route.get('/:id/comments', async (request, response) => {
+  const { id } = request.params
+  const blog = await Blog.findById(id)
+  if(!blog)
+    return response.status(404).json({message: 'Not found!'})
+  
+    response.status(200).json(blog.comments)
+})
+
+route.post('/:id/comments', async (request, response) => {
+  const { id } = request.params
+  const { comment } = request.body
+  const blog = await Blog.findById(id)
+  if(!blog)
+    return response.status(404).json({message: 'Not found!'})
+  
+  blog.comments.push(comment)
+  const newBlog = await blog.save()
+  
+  response.status(201).json(newBlog)
+
+})
+
 module.exports = route

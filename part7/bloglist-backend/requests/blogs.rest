@@ -1,0 +1,42 @@
+GET http://localhost:3003/api/blogs
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2IzNWQyMzk2MmI4NTQwODBiNDMxMCIsInVzZXJuYW1lIjoicWF6IiwiaWF0IjoxNjQ4MDQ3NTc0fQ.g5kEDWWVw7Ug60TSBKnFKSQJgB1hQMU6a8sIuBCE51M
+
+{
+  "title": "The learning path to FullStack",
+  "author": "Yhon",
+  "url": "http://google.com",
+  "": 0
+}
+
+###
+PUT http://localhost:3003/api/blogs/623849fc428061782fa85420
+Content-Type: application/json
+
+{
+  "likes": 5,
+  "title": "The learning path to FullStack",
+  "author": "Adrian Fernandez",
+  "url": "http://google.com"
+}
+
+###
+DELETE http://localhost:3003/api/blogs/623b3742a312a92febf85ab2
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2IzNjFhMzk2MmI4NTQwODBiNDMxOCIsInVzZXJuYW1lIjoibWF4IiwiaWF0IjoxNjQ4MDQ3OTAwfQ.bt5s2jNtHxngFPA0adJuNSpoW7MYd93R0F__JhSMjgA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2IzNWQyMzk2MmI4NTQwODBiNDMxMCIsInVzZXJuYW1lIjoicWF6IiwiaWF0IjoxNjQ4MDQ3NTc0fQ.g5kEDWWVw7Ug60TSBKnFKSQJgB1hQMU6a8sIuBCE51M
+
+###
+GET http://localhost:3003/api/blogs/623d8ed549b93ca53fffb71a/comments
+
+
+###
+POST http://localhost:3003/api/blogs/623d8ed549b93ca53fffb71a/comments
+Content-Type: application/json
+
+{
+  "comment": "You rock!"
+}
+
