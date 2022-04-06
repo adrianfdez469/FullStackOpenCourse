@@ -1,4 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react'
+import { Button } from 'antd'
 
 const Togglable = forwardRef(({ children, buttonLabel }, ref) => {
   const [visible, setVisible] = useState(false)
@@ -17,10 +18,10 @@ const Togglable = forwardRef(({ children, buttonLabel }, ref) => {
     <div>
       <div style={{ display: visible ? '' : 'None' }}>
         {children}
-        <button onClick={toggleVisibility}>Cancel</button>
+        <Button type='primary' danger onClick={toggleVisibility}>Cancel</Button>
       </div>
       <div style={{ display: visible ? 'None' : '' }}>
-        <button data-testid="toggle-visble" onClick={toggleVisibility}>{buttonLabel}</button>
+        <Button type='primary' data-testid="toggle-visble" onClick={toggleVisibility}>{buttonLabel}</Button>
       </div>
     </div>
   )

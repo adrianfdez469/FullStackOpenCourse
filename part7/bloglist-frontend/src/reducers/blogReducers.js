@@ -43,7 +43,6 @@ export const insertBlog = (title, author, url, user) => {
 export const loadBlogs = () => {
   return async dispatch => {
     const blogs = await serviceBlog.getAll()
-    console.log(blogs)
     dispatch(setBlogs(blogs))
   }
 }

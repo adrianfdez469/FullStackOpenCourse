@@ -5,6 +5,29 @@ import AppRoutes from '../../AppRoutes'
 import { loadBlogs } from '../../reducers/blogReducers'
 import { logout } from '../../reducers/authReducers'
 import { Link } from 'react-router-dom'
+import CustomNotification from '../Utils/Notification'
+
+
+import { Layout, Menu, Button, Typography } from 'antd'
+const { Header, Content, Footer } = Layout
+const { Text, Title } = Typography
+
+const AppLayout = (props) => {
+  return (
+    <Layout>
+      <Header>
+        <Menu theme="dark" mode="horizontal">
+          <Menu.Item key={1}><Link to='/'>Blogs</Link></Menu.Item>
+          <Menu.Item key={2}><Link to='/users'>Users</Link></Menu.Item>
+        </Menu>
+      </Header>
+      <Content style={{ padding: '0 50px' }}>
+        {props.children}
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>FullStackOpen Exercises By Adrian Fernandez</Footer>
+    </Layout>
+  )
+}
 
 
 const Blogs = ({ user }) => {
@@ -15,19 +38,21 @@ const Blogs = ({ user }) => {
     dispatch(loadBlogs())
   }, [])
 
-  const navStyle = { backgroundColor: '#ABC', padding: 7 }
+  const handleLogout = () => {
+    dispatch(logout())
+  }
 
   return (
     <div>
-      <nav style={navStyle}>
-        <Link to='/'>Blogs</Link> |&nbsp;
-        <Link to='/users'>Users</Link> |&nbsp;
-        {user.name} logged in <button onClick={() => dispatch(logout())}>Logout</button>
-      </nav>
-
-
-      <h2>Blog App</h2>
-      <AppRoutes />
+      <AppLayout>
+        <div style={{ margin: '5px 0', justifyContent: 'space-between', display: 'flex', alignItems: 'center' }}>
+          <Text strong type="success">{user.name} logged in!</Text>
+          <Button onClick={handleLogout}>Logout</Button>
+        </div>
+        <CustomNotification />
+        <Title level={2}>Blog App</Title>
+        <AppRoutes />
+      </AppLayout>
     </div>
   )
 }

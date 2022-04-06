@@ -2,20 +2,28 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch }   from 'react-redux'
 import { loadAll } from '../../reducers/usersReducer'
 import { Link } from 'react-router-dom'
+import { Typography, Table } from 'antd'
 
-const UserBlogsRow = ({ user }) => {
-  return (
-    <tr>
-      <td><Link to={`${user.id}`} >{user.name}</Link></td>
-      <td>{user.blogs.length}</td>
-    </tr>
-  )
-}
+const { Title } = Typography
 
 const UsersList = () => {
 
   const dispatch = useDispatch()
-  const users = useSelector(state => state.users )
+  const users = useSelector(state => state.users.map(user => ({ ...user, cant: user.blogs.length })) )
+
+  const tableCols = [{
+    title: 'User',
+    dataIndex: 'name',
+    key: 'name',
+    // eslint-disable-next-line react/display-name
+    render: (text, record) => (<Link to={record.id} >{text}</Link>)
+  },
+  {
+    title: 'Blogs created',
+    key: 'cant',
+    dataIndex: 'cant'
+  }
+  ]
 
   useEffect(() => {
     dispatch(loadAll())
@@ -23,18 +31,8 @@ const UsersList = () => {
 
   return (
     <>
-      <h1>User</h1>
-      <table>
-        <thead>
-          <tr>
-            <td></td>
-            <th>Blogs created</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => (<UserBlogsRow key={user.id} user={user} />))}
-        </tbody>
-      </table>
+      <Title level={3}>Users</Title>
+      <Table dataSource={users} columns={tableCols} rowKey='id' />
     </>
   )
 

@@ -1,29 +1,66 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { login } from '../../reducers/authReducers'
 
-const Login = () => {
+import { Form, Input, Button } from 'antd'
+import CustomNotification from '../Utils/Notification'
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+const LoginUI = ({ onLogin }) => {
+  return (
+    <>
+      <CustomNotification />
+      <Form
+        name="basic"
+        initialValues={{ remember: true }}
+        onFinish={onLogin}
+        autoComplete="off"
+      >
+        <Form.Item
+          label="Username"
+          name="username"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your username!',
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+          ]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+const Login = () => {
 
   const dispatch = useDispatch()
 
-  const onLogin = (event) => {
-    event.preventDefault()
-    dispatch(login( username, password ))
+  const onLogin = (values) => {
+    const { username, password } = values
+    dispatch(login(username, password))
   }
 
-  return (
-    <>
-      <h1>Login to application</h1>
-      <form data-testid="loginform" onSubmit={(event) => onLogin(event)}>
-        <div>Username: <input value={username} onChange={({ target }) => setUsername(target.value)}/></div>
-        <div>Password <input type='password' value={password} onChange={({ target }) => setPassword(target.value)}/></div>
-        <div>Username: <button type={'submit'}>Login</button></div>
-      </form>
-    </>
-  )
-
+  return <LoginUI onLogin={onLogin} />
 }
+
 export default Login

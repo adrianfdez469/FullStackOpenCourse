@@ -23,7 +23,6 @@ const useCountry = (name) => {
       axios.get(`https://restcountries.com/v3.1/name/${name}`)
         .then(({data}) => {
           if(data && data.length > 0){
-            console.log(data[0]);
             setCountry(data[0])
   
           }

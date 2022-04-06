@@ -5,6 +5,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/user-event": "^12.6.3",
+    "antd": "^4.19.5",
     "axios": "^0.21.1",
     "prop-types": "^15.8.1",
     "react": "^17.0.1",
@@ -50,5 +51,10 @@
     "cypress": "^9.5.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "^24.7.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
+    ]
   }
 }
