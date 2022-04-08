@@ -1,18 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { useSelector } from 'react-redux'
-
-
-const UserBlogItem = ({ blog }) => {
-  return (
-    <li>{blog.title}</li>
-  )
-}
+import useUsers from './useUsers'
 
 const User = () => {
 
   const { id: userId } = useParams()
-  const user = useSelector(state => state.users.find(u => u.id === userId))
+  const { getUserById } = useUsers()
+  const user = getUserById(userId)
   if(!user)
     return null
 
@@ -20,7 +14,7 @@ const User = () => {
     <>
       <h1>{user.name}</h1>
       <ul>
-        {user.blogs.map(blog => (<UserBlogItem key={blog.id} blog={blog} />))}
+        {user.blogs.map(blog => (<li key={blog.id}>{blog.title}</li>))}
       </ul>
     </>
   )

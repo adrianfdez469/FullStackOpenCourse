@@ -1,18 +1,19 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import User from './components/Users/User'
-import UsersList from './components/Users/UsersList'
-import BlogForm from './components/Blogs/BlogForm'
-import BlogList from './components/Blogs/BlogList'
-import Blog from './components/Blogs/Blog'
+import AppLayout from './Layout/Layout'
+import User from './Users/User'
+import Users from './Users/Users'
+import BlogForm from './Blogs/BlogForm/BlogForm'
+import BlogList from './Blogs/BlogList/BlogList'
+import Blog from './Blogs/BlogIView/Blog'
 
 const AppRoutes = () => {
 
   return (
-    <>
+    <AppLayout>
       <Routes>
         <Route path='/users/:id' element={<User />} />
-        <Route path='users' element={<UsersList />} />
+        <Route path='users' element={<Users />} />
         <Route path='/blogs/:id' element={<Blog />} />
         <Route path='/' element={
           <>
@@ -21,7 +22,7 @@ const AppRoutes = () => {
           </>
         } />
       </Routes>
-    </>
+    </AppLayout>
   )
 
 }

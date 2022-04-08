@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getUser } from './reducers/authReducers'
-import Blogs from './components/Blogs/Blogs'
-import Login from './components/Auth/Login'
+import React from 'react'
+import useAuth from './components/hooks/useAuth'
+import AppRoutes from './components/Routes'
+import Login from './components/Login/Login'
 import './App.css'
 
 const App = () => {
 
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.auth)
-
-  useEffect(() => {
-    dispatch(getUser())
-  }, [])
+  const { user } = useAuth()
 
   return (
     <>
       {user
-        ? <Blogs user={user} />
+        ? <AppRoutes />
         : <Login />}
     </>
   )

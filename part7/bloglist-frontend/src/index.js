@@ -15,7 +15,7 @@ const store = configureStore({
     auth: authReducer,
     blogs: blogReducers,
     users: usersReducer
-  }
+  },
 })
 
 ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root'))

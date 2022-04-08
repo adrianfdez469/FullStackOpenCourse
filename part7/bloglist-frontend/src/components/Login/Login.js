@@ -1,13 +1,24 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { login } from '../../reducers/authReducers'
 
 import { Form, Input, Button } from 'antd'
 import CustomNotification from '../Utils/Notification'
+import useAuth from '../hooks/useAuth'
 
-const LoginUI = ({ onLogin }) => {
+const Login = () => {
+
+  const { onLogin } = useAuth()
+
+  const centered = {
+    margin: '20%',
+    padding: '2em'
+  }
+
+  const colored = {
+    backgroundColor: '#ddd'
+  }
+
   return (
-    <>
+    <div style={{ ...centered, ...colored }}>
       <CustomNotification />
       <Form
         name="basic"
@@ -47,20 +58,8 @@ const LoginUI = ({ onLogin }) => {
           </Button>
         </Form.Item>
       </Form>
-    </>
+    </div>
   )
-}
-
-const Login = () => {
-
-  const dispatch = useDispatch()
-
-  const onLogin = (values) => {
-    const { username, password } = values
-    dispatch(login(username, password))
-  }
-
-  return <LoginUI onLogin={onLogin} />
 }
 
 export default Login

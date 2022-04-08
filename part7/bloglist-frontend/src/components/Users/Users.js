@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch }   from 'react-redux'
-import { loadAll } from '../../reducers/usersReducer'
+import React from 'react'
+
+
 import { Link } from 'react-router-dom'
 import { Typography, Table } from 'antd'
+import useUsers from './useUsers'
 
 const { Title } = Typography
 
 const UsersList = () => {
 
-  const dispatch = useDispatch()
-  const users = useSelector(state => state.users.map(user => ({ ...user, cant: user.blogs.length })) )
+  const { users } = useUsers()
 
   const tableCols = [{
     title: 'User',
@@ -24,10 +24,6 @@ const UsersList = () => {
     dataIndex: 'cant'
   }
   ]
-
-  useEffect(() => {
-    dispatch(loadAll())
-  }, [])
 
   return (
     <>

@@ -1,20 +1,17 @@
 import React, { useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { insertBlog } from '../../reducers/blogReducers'
-import Togglable from '../Utils/Togglable'
-
+import Togglable from '../../Utils/Togglable'
 import { Form, Input, Button, Typography } from 'antd'
+import { useBlogs } from '../blogsHooks'
 const { Title } = Typography
 
 const BlogForm = () => {
 
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.auth)
+  const { addBlog } = useBlogs()
   const togglableRef = useRef()
 
   const onBlogSummit = (values) => {
     const { title, author, url } = values
-    dispatch(insertBlog(title, author, url, user))
+    addBlog(title, author, url)
     togglableRef.current.toggleVisibility()
   }
 

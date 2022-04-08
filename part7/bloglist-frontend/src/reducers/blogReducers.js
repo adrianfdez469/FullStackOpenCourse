@@ -1,6 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import serviceBlog from '../services/blogs'
 import { setNotification } from './notificationReducers'
+
+
+export const fetchBlogs = createAsyncThunk('blogs/fehchBlogs', async () => {
+  const blogs = await serviceBlog.getAll()
+  return blogs
+})
+
 
 const blogSlice = createSlice({
   name: 'blog',
@@ -27,10 +34,19 @@ const blogSlice = createSlice({
       const { id, comment } = action.payload
       return state.map(blog => blog.id !== id ? blog : { ...blog, comments: [ comment,  ...blog.comments ] })
     }
+  },
+  extraReducers: ( builder ) => {
+    builder.addCase(fetchBlogs.fulfilled, (state, action) => {
+      if(action.payload.length > 0){
+        return [...action.payload]
+      }
+      return state
+    })
   }
 })
 
 export const { setBlogs, addBlog, like, removeBlog, addComment } = blogSlice.actions
+
 
 export const insertBlog = (title, author, url, user) => {
   return async dispatch => {
@@ -40,12 +56,12 @@ export const insertBlog = (title, author, url, user) => {
   }
 }
 
-export const loadBlogs = () => {
+/*export const loadBlogs = () => {
   return async dispatch => {
     const blogs = await serviceBlog.getAll()
     dispatch(setBlogs(blogs))
   }
-}
+}*/
 
 export const likeBlog = ( blog ) => {
   return async dispatch => {

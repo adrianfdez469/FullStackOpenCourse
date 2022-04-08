@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { List } from 'antd'
 
-const BlogItem = ({ blog }) => {
+const BlogListItem = ({ blog }) => {
 
   return (
     <List.Item>
@@ -14,4 +14,4 @@ const BlogItem = ({ blog }) => {
   )
 }
 
-export default BlogItem
+export default BlogListItem
