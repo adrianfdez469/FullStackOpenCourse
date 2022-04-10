@@ -89,22 +89,12 @@ let books = [
 ]
 
 const typeDefs = gql`
-  enum Genre {
-    classic
-    revolution
-    crime
-    refactoring
-    design
-    patterns
-    agile
-  }
-
   type Book {
     title: String!
     published: Int!,
     author: String!,
     id: ID!,
-    genres: [Genre!]!
+    genres: [String!]!
   }
 
   type Author {
@@ -117,7 +107,7 @@ const typeDefs = gql`
   type Query {
     bookCount: Int!
     authorCount: Int!
-    allBooks(name: String, genre: Genre): [Book!]!
+    allBooks(name: String, genre: String): [Book!]!
     allAuthors: [Author!]!
   }
 
@@ -126,7 +116,7 @@ const typeDefs = gql`
       title: String!
       published: Int!,
       author: String!,
-      genres: [Genre!]!
+      genres: [String!]!
     ): Book
     editAuthor(name: String!, setBornTo: Int!) : Author
   }
