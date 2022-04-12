@@ -25,3 +25,21 @@ export const GET_BOOKS = gql`
     }
   }
 `
+
+export const GET_GENRES = gql`
+  query Get {
+    allBooks {
+      genres
+    }
+  }
+`
+
+export const ME = gql`
+  query Me {
+    me {
+      username
+      favoriteGenre
+      id
+    }
+  }
+`

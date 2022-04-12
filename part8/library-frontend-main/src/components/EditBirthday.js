@@ -11,8 +11,6 @@ const EditBirthday = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    console.log(event.target.author.value);
-
     setAuthorYear({variables: {
       name: event.target.author.value, 
       year: +event.target.year.value

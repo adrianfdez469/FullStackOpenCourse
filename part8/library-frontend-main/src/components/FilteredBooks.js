@@ -1,22 +1,4 @@
-
-import { useQuery } from '@apollo/client'
-import { useEffect, useState } from 'react'
-import { GET_BOOKS } from '../apollo/querys'
-
-const FilteredBooks = ({ filter }) => {
-  
-
-  const {data} = useQuery(GET_BOOKS, {variables: {genre: filter}})
-  const [books, setBooks] = useState([])
-
-  useEffect(() => {
-    if(data && data.allBooks){
-      setBooks(data.allBooks)
-    }
-  }, [data])
-
-
-  return (
+const FilteredBooks = ({ filter, books }) => (
     <table>
         <tbody>
           <tr>
@@ -36,6 +18,6 @@ const FilteredBooks = ({ filter }) => {
         </tbody>
       </table>
   )
-}
+
 
 export default FilteredBooks

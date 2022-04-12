@@ -24,10 +24,10 @@ const { execute, subscribe } = require('graphql')
 const { SubscriptionServer } = require('subscriptions-transport-ws')
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 const jwt = require('jsonwebtoken')
-const express = require('express');
-const http = require('http');
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
+const express = require('express')
+const http = require('http')
+const typeDefs = require('./schema')
+const resolvers = require('./resolvers')
 const { PORT, JWT_SECRET } = require('../globals')
 const User = require('../models/user')
 
